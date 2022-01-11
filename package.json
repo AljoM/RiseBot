@@ -1,0 +1,15 @@
+{
+  "name": "risebot",
+  "version": "1.0.0",
+  "description": "Bot for Rise's Discord server",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AljoM",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^13.5.1",
+    "dotenv-flow": "^3.2.0"
+  }
+}
