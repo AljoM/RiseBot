@@ -28,6 +28,9 @@ client.on("messageCreate", message=> {
   
     if(command == "recruitment") client.commands.get("recruitment").execute(message, args);
 
+    else if(command == "interview") client.commands.get("interview").execute(message, args, client);
+
+    else message.channel.send("Command does not exist");
   })
 
 client.login(TOKEN);
