@@ -41,7 +41,7 @@ client.on("messageReactionAdd", async (reaction, user) => {
 
   // check if reaction was added to readycheck
   if(reaction.message.author.id == client.user.id && !user.bot && reaction.message.embeds.length > 0 && reaction.message.embeds[0].title.startsWith("Ready check")) {
-    await client.commands.get("testreadycheck").execute(null, null, MessageEmbed, client, createNewReadyCheck=false, isReactionAdded=true, reaction, user);
+    await client.commands.get("readycheck").execute(null, null, MessageEmbed, client, createNewReadyCheck=false, isReactionAdded=true, reaction, user);
   }
 });
 
@@ -52,7 +52,7 @@ client.on("messageReactionRemove", async (reaction, user) => {
   console.log(user.username);
   // check if reaction was removed from readycheck
   if(reaction.message.author.id == client.user.id && !user.bot && reaction.message.embeds.length > 0 && reaction.message.embeds[0].title.startsWith("Ready check")) {
-    await client.commands.get("testreadycheck").execute(null, null, MessageEmbed, client, createNewReadyCheck=false, isReactionAdded=false, reaction, user);
+    await client.commands.get("readycheck").execute(null, null, MessageEmbed, client, createNewReadyCheck=false, isReactionAdded=false, reaction, user);
   }
 });
 
