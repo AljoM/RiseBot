@@ -8,11 +8,15 @@ module.exports = {
           console.log("User has required permissions");
           
           const applicantId = args.shift();
+          console.log(applicantId);
           if(!message.guild.members.cache.has(applicantId)) {
-            message.channel.send("Interview was not created. Specified user is not in the server.");
-            return;
+            //message.channel.send("Interview was not created. Specified user is not in the server.");
+            const applicant = await message.guild.members.fetch(applicantId);
+            console.log(applicant.displayName);
+            //return;
           }
-          const applicant = message.guild.members.cache.get(applicantId);
+          const applicant = await message.guild.members.fetch(applicantId);
+          //const applicant = message.guild.members.cache.get(applicantId);
 
           const applicationId = "866789313127907340";
           const managementId = "779765250450259989";
@@ -37,7 +41,7 @@ module.exports = {
     
           const thread = await channelToClone.threads.create({
             name: applicant.displayName,
-            autoArchiveDuration: 60,
+            autoArchiveDuration: 60 * 24,
             reason: "testing",
           });
           thread.send("<@&"+adminRoleId+">\nInfo in <#" + interviewChannel.id + ">");
