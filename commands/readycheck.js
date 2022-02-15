@@ -32,18 +32,20 @@ module.exports = {
                     return;
                 }
                 description = description.concat(descriptionPart.slice(1));
-                while (true) {
-                    descriptionPart = args.shift();
-                    if(descriptionPart === "undefined") {
-                        message.channel.send('Description should end with "');
-                        return;
+                if(descriptionPart[descriptionPart.length-1] != '"') {
+                    while (true) {
+                        descriptionPart = args.shift();
+                        if(descriptionPart === "undefined") {
+                            message.channel.send('Description should end with "');
+                            return;
+                        }
+                        const length = descriptionPart.length;
+                        if(descriptionPart[length-1] == '"') {
+                            description = description.concat(" " + descriptionPart.slice(0, -1));
+                            break;
+                        }
+                        description = description.concat(" " + descriptionPart);
                     }
-                    const length = descriptionPart.length;
-                    if(descriptionPart[length-1] == '"') {
-                        description = description.concat(" " + descriptionPart.slice(0, -1));
-                        break;
-                    }
-                    description = description.concat(" " + descriptionPart);
                 }
             }
 
@@ -273,7 +275,7 @@ function updateParticipation(text, type, increment) {
         }
         return ("Statics (" + (parseInt(numberReady) + increment).toString() + "/" + numberTotal + ")");
     }    
-    
+
     else if (type == "substitute") {
         let digitsReady = text.match(/\d/g);
         let numberReady = "";
