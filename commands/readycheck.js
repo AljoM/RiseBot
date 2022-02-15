@@ -31,8 +31,8 @@ module.exports = {
                     message.channel.send('Description should start with "');
                     return;
                 }
-                description = description.concat(descriptionPart.slice(1));
                 if(descriptionPart[descriptionPart.length-1] != '"') {
+                    description = description.concat(descriptionPart.slice(1));
                     while (true) {
                         descriptionPart = args.shift();
                         if(descriptionPart === "undefined") {
@@ -47,6 +47,7 @@ module.exports = {
                         description = description.concat(" " + descriptionPart);
                     }
                 }
+                else description = description.concat(descriptionPart.slice(1, -1));
             }
 
             staticRole = await message.guild.roles.fetch(staticRoleID);
