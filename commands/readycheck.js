@@ -73,7 +73,7 @@ module.exports = {
             if(fieldTwoValue == "") fieldTwoValue = EMPTY_CHAR;
             let fieldThreeValue = EMPTY_CHAR;
 
-            let fieldOneName = " Statics (0/" + staticSize + ")"; 
+            let fieldOneName = " Statics (0/" + staticSize.toString() + ")"; 
             let fieldTwoName = EMPTY_CHAR;
             let fieldThreeName = "Substitutes available (0)";
 
