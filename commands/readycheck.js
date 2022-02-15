@@ -257,7 +257,29 @@ function editEmbed(embed, fields) {
 }
 // gets integer number from embed's field names
 function updateParticipation(text, type, increment) {
-    var numbers = text.match(/\d/g);
-    if(type == "static") return ("Statics (" + (parseInt(numbers[0]) + increment).toString() + "/" + numbers[1] + ")");
-    else if (type == "substitute") return ("Substitutes available (" + (parseInt(numbers[0]) + increment).toString() + ")");
+    if(type == "static") {    
+        let splitText = text.split("/");
+        // get number of ready players
+        let digitsReady = splitText[0].match(/\d/g);
+        let numberReady = "";
+        for(let i=0; i<digitsReady.length; i++) {
+            numberReady += digitsReady[i];
+        }
+        // get number of total players
+        let digitsTotal = splitText[1].match(/\d/g);
+        let numberTotal = "";
+        for(let i=0; i<digitsTotal.length; i++) {
+            numberTotal += digitsTotal[i];
+        }
+        return ("Statics (" + (parseInt(numberReady) + increment).toString() + "/" + numberTotal + ")");
+    }    
+    
+    else if (type == "substitute") {
+        let digitsReady = text.match(/\d/g);
+        let numberReady = "";
+        for(let i=0; i<digitsReady.length; i++) {
+            numberReady += digitsReady[i];
+        }
+        return ("Substitutes available (" + (parseInt(numberReady) + increment).toString() + ")");
+    }
 }
