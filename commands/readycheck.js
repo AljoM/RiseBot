@@ -86,6 +86,9 @@ module.exports = {
             let embedDescription = "<@&" + staticRole.id + ">" + " -> React with ✅❌\nSubstitutes -> React with ☑";
             let author = await message.guild.members.fetch(message.author.id);
             let authorNickname = author.nickname;
+            if(authorNickname === null) {
+                authorNickname = author.displayName;
+            }
             let authorIcon = author.displayAvatarURL();
 
             const embed = new MessageEmbed()
