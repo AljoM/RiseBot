@@ -10,13 +10,9 @@ module.exports = {
           const applicantId = args.shift();
           console.log(applicantId);
           if(!message.guild.members.cache.has(applicantId)) {
-            //message.channel.send("Interview was not created. Specified user is not in the server.");
-            const applicant = await message.guild.members.fetch(applicantId);
-            console.log(applicant.displayName);
-            //return;
-          }
+            return;
+          } 
           const applicant = await message.guild.members.fetch(applicantId);
-          //const applicant = message.guild.members.cache.get(applicantId);
 
           const applicationId = "866789313127907340";
           const managementId = "779765250450259989";

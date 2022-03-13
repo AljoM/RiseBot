@@ -20,16 +20,20 @@ client.once("ready", async () => {
 });
 
 client.on("messageCreate", message=> {
-    if(message.author.bot) return;
-
-    let args = message.content.slice(PREFIX.length).trim().split(/ +/g);
-    let command = args.shift().toLowerCase();
+    try{
+      if(message.author.bot) return;
   
-    if(command == "recruitment") client.commands.get("recruitment").execute(message, args);
-
-    else if(command == "interview") client.commands.get("interview").execute(message, args, client);
-
-    else if(command == "readycheck" || command == "rc") client.commands.get("readycheck").execute(message, args, MessageEmbed, client, createNewReadyCheck=true);
+      let args = message.content.slice(PREFIX.length).trim().split(/ +/g);
+      let command = args.shift().toLowerCase();
+    
+      if(command == "recruitment") client.commands.get("recruitment").execute(message, args);
+  
+      else if(command == "interview") client.commands.get("interview").execute(message, args, client);
+  
+      else if(command == "readycheck" || command == "rc") client.commands.get("readycheck").execute(message, args, MessageEmbed, client, createNewReadyCheck=true);
+    } catch(err) {
+      console.log(err);
+    }
     // Test
   })
 
