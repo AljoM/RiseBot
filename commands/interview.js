@@ -9,10 +9,9 @@ module.exports = {
           
           const applicantId = args.shift();
           console.log(applicantId);
-          if(!message.guild.members.cache.has(applicantId)) {
-            return;
-          } 
+
           const applicant = await message.guild.members.fetch(applicantId);
+          console.log(applicant);
 
           const applicationId = "866789313127907340";
           const managementId = "779765250450259989";
